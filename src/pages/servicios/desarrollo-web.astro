@@ -1,0 +1,28 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Diseño responsive',
+  'Página web, landing o sitio corporativo',
+  'Optimización básica para conversión',
+];
+const forWho = 'Si necesitas una web o landing para dar credibilidad y captar clientes.';
+const related = [
+  { name: 'Link in bio', href: '/servicios/link-in-bio' },
+  { name: 'Branding', href: '/servicios/branding' },
+  { name: 'Estrategia digital', href: '/servicios/estrategia-digital' },
+];
+---
+<ServicePageLayout
+  title="Desarrollo web | MJ Marketing Lab"
+  description="Páginas web, landing pages y sitios a medida. Desarrollo web moderno para emprendedores y negocios."
+  slug="desarrollo-web"
+  serviceName="Desarrollo web"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Creamos tu página web, landing page o sitio corporativo: diseño responsive, rápido y enfocado en conversión. Ideal para dar presencia profesional a tu negocio en internet.
+  </p>
+</ServicePageLayout>

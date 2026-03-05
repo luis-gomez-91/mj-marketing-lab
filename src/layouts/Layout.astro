@@ -1,0 +1,205 @@
+---
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Agencia digital para emprendedores y negocios: estrategia, contenido y publicidad en redes. Creamos o mejoramos tu presencia digital para que atraigas clientes y vendas más.' } = Astro.props;
+
+const servicios = [
+  { name: 'Estrategia digital', href: '/servicios/estrategia-digital' },
+  { name: 'Publicidad digital', href: '/servicios/publicidad-digital' },
+  { name: 'Link in bio', href: '/servicios/link-in-bio' },
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+  { name: 'Branding', href: '/servicios/branding' },
+  { name: 'Fotografía y video', href: '/servicios/fotografia-video' },
+  { name: 'Desarrollo web', href: '/servicios/desarrollo-web' },
+];
+---
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen bg-white text-slate-800 font-sans antialiased">
+    <!-- Nav: solo barra completa cuando hay espacio (lg+); por debajo, hamburguesa para que no se aprieten los textos -->
+    <header id="main-nav" class="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[calc(100%-1.5rem)] max-w-5xl rounded-4xl bg-mauve-900/60 backdrop-blur-md border border-white/20 nav-transition hidden lg:block">
+      <nav class="w-full px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between" aria-label="Principal">
+        <a href="/" class="text-lg sm:text-xl font-bold text-white whitespace-nowrap shrink-0">MJ Marketing Lab</a>
+
+        <!-- Desktop: enlaces + dropdown (visible solo en lg+) -->
+        <div class="flex items-center gap-2 lg:gap-4 shrink-0 flex-nowrap">
+          <div class="relative group" id="dropdown-wrap">
+            <button type="button" id="btn-servicios" class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/15 transition whitespace-nowrap" aria-expanded="false" aria-haspopup="true">
+              Servicios
+              <svg class="w-4 h-4 ml-0.5 transition-transform duration-200 group-[.is-open]:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="dropdown-servicios" class="absolute left-0 top-full mt-2 min-w-[220px] py-2 bg-mauve-800 border border-white/10 rounded-xl shadow-xl hidden z-50 backdrop-blur-md" role="menu">
+              <ul class="py-0.5">
+                {servicios.map((s) => (
+                  <li role="none">
+                    <a href={s.href} role="menuitem" class="block py-2.5 px-4 text-sm text-white/90 hover:bg-white/10 hover:text-white transition rounded-lg mx-1.5">
+                      {s.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <a href="/#paquete" class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/15 transition whitespace-nowrap">Precios</a>
+          <a href="/#beneficios" class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/15 transition whitespace-nowrap">Beneficios</a>
+          <a href="/faq" class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/15 transition whitespace-nowrap">FAQ</a>
+          <a href="/#contacto" class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/15 transition whitespace-nowrap">Contacto</a>
+          <a href="/#contacto" class="inline-flex items-center justify-center rounded-xl bg-mauve-600 px-4 py-2 text-sm font-medium text-white hover:bg-mauve-500 transition whitespace-nowrap">Solicitar asesoría</a>
+        </div>
+
+      </nav>
+    </header>
+
+    <!-- Solo hamburguesa en esquina superior derecha (visible por debajo de lg para evitar que el nav se apriete) -->
+    <div class="fixed top-4 right-4 z-40 lg:hidden">
+      <button type="button" id="btn-menu-mobile" class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-mauve-900/80 backdrop-blur-md border border-white/20 text-white hover:bg-mauve-800 transition focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-mobile">
+        <svg id="icon-hamburger" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú móvil: panel lateral (colores mauve a corde con la web) -->
+    <div id="menu-mobile-backdrop" class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+    <aside id="menu-mobile" class="fixed top-0 right-0 z-50 h-full w-full max-w-[300px] bg-mauve-800 border-l border-white/10 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out lg:hidden" aria-label="Menú de navegación" aria-hidden="true">
+      <div class="flex flex-col h-full pt-6 pb-8 px-5">
+        <div class="flex items-center justify-between mb-8">
+          <span class="text-sm font-semibold uppercase tracking-wider text-white/70">Menú</span>
+          <button type="button" id="btn-close-menu" class="w-10 h-10 rounded-xl flex items-center justify-center text-white/90 hover:bg-white/10 transition" aria-label="Cerrar menú">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-1" aria-label="Enlaces del menú">
+          <p class="text-xs font-semibold text-white/60 uppercase tracking-wider px-3 py-2">Servicios</p>
+          <ul class="space-y-0.5 mb-4">
+            {servicios.map((s) => (
+              <li>
+                <a href={s.href} class="menu-mobile-link block py-2.5 px-3 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition text-sm font-medium">
+                  {s.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="/#paquete" class="menu-mobile-link block py-2.5 px-3 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition text-sm font-medium">Precios</a>
+          <a href="/#beneficios" class="menu-mobile-link block py-2.5 px-3 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition text-sm font-medium">Beneficios</a>
+          <a href="/faq" class="menu-mobile-link block py-2.5 px-3 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition text-sm font-medium">FAQ</a>
+          <a href="/#contacto" class="menu-mobile-link block py-2.5 px-3 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition text-sm font-medium">Contacto</a>
+          <a href="/#contacto" class="menu-mobile-link block mt-2 py-3 px-4 rounded-xl bg-mauve-600 text-white text-center font-semibold hover:bg-mauve-500 transition text-sm">Solicitar asesoría</a>
+        </nav>
+      </div>
+    </aside>
+
+    <slot />
+
+    <script>
+      // Dropdown Servicios (solo desktop): abrir/cerrar
+      (function () {
+        const wrap = document.getElementById('dropdown-wrap');
+        const btn = document.getElementById('btn-servicios');
+        const dropdown = document.getElementById('dropdown-servicios');
+
+        function open() {
+          dropdown?.classList.remove('hidden');
+          wrap?.classList.add('is-open');
+          btn?.setAttribute('aria-expanded', 'true');
+        }
+        function close() {
+          dropdown?.classList.add('hidden');
+          wrap?.classList.remove('is-open');
+          btn?.setAttribute('aria-expanded', 'false');
+        }
+
+        btn?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          dropdown?.classList.contains('hidden') ? open() : close();
+        });
+
+        document.addEventListener('click', (e) => {
+          if (wrap && !wrap.contains(e.target)) close();
+        });
+
+        dropdown?.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+
+        window.addEventListener('scroll', close, { passive: true });
+      })();
+
+      // Menú móvil: hamburguesa, panel y backdrop
+      (function () {
+        const btnOpen = document.getElementById('btn-menu-mobile');
+        const btnClose = document.getElementById('btn-close-menu');
+        const menu = document.getElementById('menu-mobile');
+        const backdrop = document.getElementById('menu-mobile-backdrop');
+        const iconHam = document.getElementById('icon-hamburger');
+        const iconClose = document.getElementById('icon-close');
+        const links = document.querySelectorAll('.menu-mobile-link');
+
+        function openMenu() {
+          menu?.classList.remove('translate-x-full');
+          menu?.setAttribute('aria-hidden', 'false');
+          backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+          backdrop?.classList.add('pointer-events-auto');
+          iconHam?.classList.add('hidden');
+          iconClose?.classList.remove('hidden');
+          btnOpen?.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+          menu?.classList.add('translate-x-full');
+          menu?.setAttribute('aria-hidden', 'true');
+          backdrop?.classList.add('opacity-0', 'pointer-events-none');
+          backdrop?.classList.remove('pointer-events-auto');
+          iconHam?.classList.remove('hidden');
+          iconClose?.classList.add('hidden');
+          btnOpen?.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        btnOpen?.addEventListener('click', openMenu);
+        btnClose?.addEventListener('click', closeMenu);
+        backdrop?.addEventListener('click', closeMenu);
+        links.forEach((link) => link.addEventListener('click', closeMenu));
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menu && !menu.classList.contains('translate-x-full')) closeMenu();
+        });
+      })();
+
+      // Nav: al scroll down → animación que baja y desaparece; al scroll up → vuelve
+      (function () {
+        const nav = document.getElementById('main-nav');
+        if (!nav) return;
+        let lastScrollY = window.scrollY;
+        const threshold = 60;
+        window.addEventListener('scroll', () => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > threshold) {
+            if (currentScrollY > lastScrollY) nav.classList.add('nav-scroll-hidden');
+            else nav.classList.remove('nav-scroll-hidden');
+          } else nav.classList.remove('nav-scroll-hidden');
+          lastScrollY = currentScrollY;
+        }, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

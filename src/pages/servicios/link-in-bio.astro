@@ -1,0 +1,28 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Diseño de la página de enlaces',
+  'Enlaces personalizados (tienda, redes, promos)',
+  'Actualizaciones cuando las necesites',
+];
+const forWho = 'Perfiles de Instagram o TikTok que quieren una sola URL para tienda, redes y promociones.';
+const related = [
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+  { name: 'Desarrollo web', href: '/servicios/desarrollo-web' },
+  { name: 'Branding', href: '/servicios/branding' },
+];
+---
+<ServicePageLayout
+  title="Link in bio | MJ Marketing Lab"
+  description="Página de enlaces tipo link in bio para Instagram y redes. Una sola URL para tu contenido y ofertas."
+  slug="link-in-bio"
+  serviceName="Link in bio"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Una sola URL para tu perfil de Instagram o TikTok: enlaza tu tienda, redes, promociones y más. Página de enlaces personalizada y fácil de actualizar, ideal para emprendedores e influencers.
+  </p>
+</ServicePageLayout>

@@ -1,0 +1,28 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Diseño de logo',
+  'Paleta de colores y tipografías',
+  'Guía de estilo básica',
+];
+const forWho = 'Si estás creando tu marca o quieres refrescar tu imagen para que sea coherente en todos los canales.';
+const related = [
+  { name: 'Desarrollo web', href: '/servicios/desarrollo-web' },
+  { name: 'Fotografía y video', href: '/servicios/fotografia-video' },
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+];
+---
+<ServicePageLayout
+  title="Branding | MJ Marketing Lab"
+  description="Identidad de marca, logo, colores y estilo visual. Branding para emprendedores y negocios."
+  slug="branding"
+  serviceName="Branding"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Desarrollamos tu identidad de marca: logo, paleta de colores, tipografías y guía de estilo. Todo para que tu negocio se vea coherente y profesional en redes, web y materiales.
+  </p>
+</ServicePageLayout>

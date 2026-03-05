@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Paleta basada en mauve de Tailwind (v4.2): tonos neutros con undertone violeta */
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+
+  /* Mauve: paleta oficial Tailwind */
+  --color-mauve-50: #fafafa;
+  --color-mauve-100: #f3f1f3;
+  --color-mauve-200: #e7e4e7;
+  --color-mauve-300: #d7d0d7;
+  --color-mauve-400: #a89ea9;
+  --color-mauve-500: #79697b;
+  --color-mauve-600: #594c5b;
+  --color-mauve-700: #463947;
+  --color-mauve-800: #2a212c;
+  --color-mauve-900: #1d161e;
+
+  /* Accent basado en mauve */
+  --color-accent: var(--color-mauve-500);
+  --color-accent-hover: var(--color-mauve-600);
+  --color-accent-light: var(--color-mauve-400);
+}
+
+/* Títulos con Montserrat */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Hero: solo la capa de blur se difumina hacia la derecha (el texto queda nítido) */
+.hero-blur-fade {
+  -webkit-mask-image: linear-gradient(to right, black 30%, transparent 100%);
+  mask-image: linear-gradient(to right, black 30%, transparent 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+@media (min-width: 1024px) {
+  .hero-blur-fade {
+    -webkit-mask-image: linear-gradient(to right, black 35%, transparent 100%);
+    mask-image: linear-gradient(to right, black 35%, transparent 100%);
+  }
+}
+
+/* Nav flotante: transición al volver a mostrarse */
+.nav-transition {
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+/* Al hacer scroll: baja un poco y luego desaparece hacia arriba */
+.nav-scroll-hidden {
+  animation: nav-hide 0.5s ease-out forwards;
+}
+@keyframes nav-hide {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(12px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(-100% - 2rem));
+    opacity: 0;
+  }
+}
+
+/* Flecha decorativa: bounce suave hacia abajo */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* View Transitions: un poco más lentas para que se aprecie el morph del icono (por defecto ~250ms) */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: ease-in-out;
+}

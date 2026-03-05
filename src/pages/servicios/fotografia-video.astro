@@ -1,0 +1,28 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Fotos de producto o contenido',
+  'Reels y videos cortos',
+  'Material optimizado para redes',
+];
+const forWho = 'Emprendedores que quieren contenido visual profesional sin producirlo ellos mismos.';
+const related = [
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+  { name: 'Publicidad digital', href: '/servicios/publicidad-digital' },
+  { name: 'Branding', href: '/servicios/branding' },
+];
+---
+<ServicePageLayout
+  title="Fotografía y video | MJ Marketing Lab"
+  description="Servicios de fotografía y video para redes sociales y contenido profesional. Reels, fotos de producto y contenido visual para tu marca."
+  slug="fotografia-video"
+  serviceName="Fotografía y video"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Creamos contenido visual profesional para tu marca: fotos de producto, reels, videos promocionales y material optimizado para redes sociales. Ideal para emprendedores que quieren destacar con calidad.
+  </p>
+</ServicePageLayout>

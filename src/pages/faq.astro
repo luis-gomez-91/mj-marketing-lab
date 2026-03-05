@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    question: '¿Con qué tipo de negocios trabajan?',
+    answer: 'Trabajamos con emprendedores y negocios que quieren crear presencia desde cero, ordenar lo que ya tienen o hacer crecer su audiencia y ventas. No importa si acabas de abrir tus redes o si ya llevas tiempo: te ayudamos a que tu presencia en redes realmente venda.',
+  },
+  {
+    question: '¿Trabajan con negocios que ya tienen redes?',
+    answer: 'Sí. Muchos de nuestros clientes ya tienen perfiles y quieren mejorar el contenido, la estrategia o la publicidad para vender más. Te ayudamos tanto a arrancar como a llevar tu presencia al siguiente nivel.',
+  },
+  {
+    question: '¿En qué redes sociales trabajan?',
+    answer: 'Trabajamos principalmente con Instagram, Facebook y TikTok. Usamos contenido (publicaciones, reels), estrategia y publicidad para que te conozcan y te contacten, muchas veces mediante un botón de WhatsApp directo.',
+  },
+  {
+    question: '¿Cuál es la diferencia entre un paquete de pago único y un plan mensual?',
+    answer: 'Los paquetes de pago único (Emprende, Impulso Digital, Reels, Marca Inicial) son ideales para arrancar: optimizamos tu perfil, te damos contenido profesional y asesoría puntual. Los planes mensuales son para quien quiere crecer de forma continua: publicaciones y reels cada mes, estrategia de contenido y, en planes superiores, gestión de publicidad.',
+  },
+  {
+    question: '¿Cómo es el proceso después de solicitar asesoría?',
+    answer: 'Te contactamos por WhatsApp o correo para conocer tu negocio y lo que necesitas. Definimos juntos el servicio o paquete que mejor se ajuste. Luego acordamos plazos, entregas y forma de pago. Trabajamos de forma cercana para que veas resultados y aprendas en el camino.',
+  },
+  {
+    question: '¿Puedo contratar solo un servicio (por ejemplo, link in bio o branding)?',
+    answer: 'Sí. Puedes contratar un solo servicio como link in bio, branding, desarrollo web o fotografía y video. También puedes combinar varios o empezar con un paquete y luego pasar a un plan mensual si quieres seguir creciendo.',
+  },
+  {
+    question: '¿Los precios incluyen IVA?',
+    answer: 'Los precios mostrados son referenciales. Al contactarnos te confirmamos el valor final según tu país y si aplica IVA o impuestos según la normativa local.',
+  },
+  {
+    question: '¿Entregan las redes sociales o el sitio web cuando terminan?',
+    answer: 'Sí. Todo lo que creamos (perfiles optimizados, contenido, páginas web, link in bio) es tuyo. En planes mensuales, el contenido y la estrategia se entregan cada mes; tú mantienes el control de tus redes y de tu sitio.',
+  },
+];
+---
+<Layout title="Preguntas frecuentes | MJ Marketing Lab" description="Respuestas a las dudas más comunes sobre nuestros servicios de marketing digital, paquetes y planes para emprendedores y negocios.">
+  <main class="min-h-screen w-full pt-28 sm:pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <div class="w-full max-w-3xl mx-auto">
+      <a href="/" class="text-mauve-600 hover:text-mauve-700 text-sm font-medium mb-8 inline-block">← Volver al inicio</a>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Preguntas frecuentes</h1>
+      <p class="mt-3 text-slate-600">
+        Resolvemos las dudas más comunes sobre nuestros servicios, precios y proceso.
+      </p>
+
+      <dl class="mt-12 space-y-6">
+        {faqs.map((faq, i) => (
+          <div class="rounded-2xl bg-white border border-slate-200 p-6 shadow-sm hover:shadow-md transition">
+            <dt class="text-lg font-semibold text-slate-900">
+              {faq.question}
+            </dt>
+            <dd class="mt-3 text-slate-600 leading-relaxed">
+              {faq.answer}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-12 text-center">
+        <p class="text-slate-600">¿No encuentras tu duda?</p>
+        <a href="/#contacto" class="mt-3 inline-flex items-center justify-center rounded-xl bg-mauve-500 px-6 py-3 text-white font-medium hover:bg-mauve-600 transition">
+          Solicitar asesoría
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Configuración y lanzamiento de campañas',
+  'Creativos y copy para anuncios',
+  'Segmentación de audiencia',
+  'Seguimiento y optimización',
+];
+const forWho = 'Si ya tienes producto o servicio definido y quieres llegar a más clientes con publicidad pagada en Meta.';
+const related = [
+  { name: 'Estrategia digital', href: '/servicios/estrategia-digital' },
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+  { name: 'Fotografía y video', href: '/servicios/fotografia-video' },
+];
+---
+<ServicePageLayout
+  title="Publicidad digital | MJ Marketing Lab"
+  description="Campañas en Facebook, Instagram y redes. Publicidad digital para atraer clientes y vender más."
+  slug="publicidad-digital"
+  serviceName="Publicidad digital"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Creamos y gestionamos campañas publicitarias en Facebook e Instagram para que más personas conozcan tu negocio. Segmentación, creativos y optimización para conseguir clientes y ventas.
+  </p>
+</ServicePageLayout>

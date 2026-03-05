@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceIcon from './ServiceIcon.astro';
+
+interface RelatedService {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  slug: 'estrategia-digital' | 'publicidad-digital' | 'link-in-bio' | 'redes-sociales' | 'branding' | 'fotografia-video' | 'desarrollo-web';
+  serviceName: string;
+  includes: string[];
+  forWho: string;
+  related: RelatedService[];
+}
+
+const { title, description, slug, serviceName, includes, forWho, related } = Astro.props;
+---
+<Layout title={title} description={description}>
+  <main class="min-h-screen w-full pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-6">
+        <ol class="flex flex-wrap items-center gap-x-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-mauve-600 transition">Inicio</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/#servicios" class="hover:text-mauve-600 transition">Servicios</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-medium" aria-current="page">{serviceName}</li>
+        </ol>
+      </nav>
+
+      <a href="/#servicios" class="text-mauve-600 hover:text-mauve-700 text-sm font-medium mb-8 inline-block">← Ver todos los servicios</a>
+
+      <div class="flex items-center gap-4 mb-6">
+        <ServiceIcon slug={slug} variant="page" />
+        <h1 class="text-4xl sm:text-5xl font-bold text-slate-900">{serviceName}</h1>
+      </div>
+
+      <div class="mt-6 text-lg text-slate-600 leading-relaxed">
+        <slot />
+      </div>
+
+      <!-- Qué incluye -->
+      <section class="mt-10 pt-8 border-t border-mauve-200">
+        <h2 class="text-lg font-semibold text-slate-900 mb-3">Qué incluye</h2>
+        <ul class="space-y-2 text-slate-600">
+          {includes.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="text-mauve-500 mt-0.5" aria-hidden="true">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Para quién es -->
+      <section class="mt-8 p-4 rounded-xl bg-mauve-50 border border-mauve-200/80">
+        <p class="text-slate-700">
+          <span class="font-semibold text-slate-900">Ideal para: </span>{forWho}
+        </p>
+      </section>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/#contacto" class="inline-flex items-center justify-center rounded-xl bg-mauve-600 px-6 py-3 text-white font-medium hover:bg-mauve-500 transition">Solicitar asesoría</a>
+        <a href="/#paquete" class="inline-flex items-center justify-center rounded-xl border-2 border-mauve-300 text-mauve-700 px-6 py-3 font-medium hover:bg-mauve-50 transition">Ver planes y precios</a>
+      </div>
+
+      <!-- También te puede interesar -->
+      {related.length > 0 && (
+        <section class="mt-16 pt-10 border-t border-mauve-200">
+          <h2 class="text-lg font-semibold text-slate-900 mb-4">También te puede interesar</h2>
+          <ul class="flex flex-wrap gap-3">
+            {related.map((s) => (
+              <li>
+                <a href={s.href} class="inline-flex items-center rounded-xl bg-mauve-100 text-mauve-800 px-4 py-2.5 text-sm font-medium hover:bg-mauve-200 transition">
+                  {s.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Plan de objetivos y canales recomendados',
+  'Calendario de contenido y temas',
+  'Métricas clave y seguimiento',
+  'Informe inicial y recomendaciones',
+];
+const forWho = 'Si estás empezando en redes o quieres ordenar tu presencia con una hoja de ruta clara.';
+const related = [
+  { name: 'Publicidad digital', href: '/servicios/publicidad-digital' },
+  { name: 'Redes sociales', href: '/servicios/redes-sociales' },
+  { name: 'Link in bio', href: '/servicios/link-in-bio' },
+];
+---
+<ServicePageLayout
+  title="Estrategia digital | MJ Marketing Lab"
+  description="Estrategia de marketing digital, planes de contenido y crecimiento online para tu negocio."
+  slug="estrategia-digital"
+  serviceName="Estrategia digital"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Definimos tu plan de marketing digital: objetivos, canales, contenido y métricas. Te guiamos para que tu presencia en redes y web esté alineada a tu negocio y consigas resultados a medio y largo plazo.
+  </p>
+</ServicePageLayout>

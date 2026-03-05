@@ -1,0 +1,29 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const includes = [
+  'Gestión de perfiles en Instagram y Facebook',
+  'Publicaciones y reels',
+  'Ideas de contenido y calendario',
+  'Respuestas a comentarios (si lo acordamos)',
+];
+const forWho = 'Si quieres presencia constante en Instagram y Facebook sin dedicarle todo tu tiempo.';
+const related = [
+  { name: 'Estrategia digital', href: '/servicios/estrategia-digital' },
+  { name: 'Link in bio', href: '/servicios/link-in-bio' },
+  { name: 'Fotografía y video', href: '/servicios/fotografia-video' },
+];
+---
+<ServicePageLayout
+  title="Redes sociales | MJ Marketing Lab"
+  description="Gestión de redes sociales, contenido y estrategia para Instagram, Facebook y más. Presencia profesional para tu marca."
+  slug="redes-sociales"
+  serviceName="Redes sociales"
+  includes={includes}
+  forWho={forWho}
+  related={related}
+>
+  <p>
+    Optimizamos y gestionamos tus redes: creación de perfiles, publicaciones, reels e ideas de contenido. Te ayudamos a conectar con tu audiencia y crecer en Instagram, Facebook y otras plataformas.
+  </p>
+</ServicePageLayout>
